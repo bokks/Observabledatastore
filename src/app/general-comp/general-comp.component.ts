@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataServiceService } from '../data-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-general-comp',
@@ -8,22 +10,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GeneralCompComponent implements OnInit {
   @Input() dataKey : string;
   @Input() dataContext : string;
-  data : object = {
-    pyWorkPage : {
-      FirstName : "Suman",
-      LastName : "Bokkasam"
-    }
-  }
-
-  dataKey1:string;
-
   
-  constructor() {
+
+  data : object;
+  
+  constructor(private dataService: DataServiceService) {
 
    }
 
   ngOnInit() {
-    this.dataKey1 = this.data[this.dataContext][this.dataKey];
+    this.dataService.getData().subscribe((data) => {
+      this.data = data;
+  });
   }
 
 }

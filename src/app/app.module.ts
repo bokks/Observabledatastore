@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GeneralCompComponent } from './general-comp/general-comp.component';
-
+import {DataServiceService} from './data-service.service'
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +13,7 @@ import { GeneralCompComponent } from './general-comp/general-comp.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
